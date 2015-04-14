@@ -11,9 +11,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.*;
 import android.graphics.Color;
+import android.widget.Toast;
+import android.util.Log;
 
 
 public class FunFactsActivity extends Activity {
+
+    public static final String TAG = FunFactsActivity.class.getSimpleName();
 
     private FactBook mFactBook = new FactBook();
     private ColorWheel mColorWheel = new ColorWheel();
@@ -46,5 +50,10 @@ public class FunFactsActivity extends Activity {
             }
         };
         showFactButton.setOnClickListener(listener);
+
+
+        //  Toast.makeText(this, "Yay, activity is created!", Toast.LENGTH_LONG).show();
+        Log.d(TAG, "We're logging from the onCreate() method");
+
     }
 }
