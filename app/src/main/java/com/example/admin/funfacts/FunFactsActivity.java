@@ -7,14 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.*;
+import android.graphics.Color;
 
 
 public class FunFactsActivity extends Activity {
 
     private FactBook mFactBook = new FactBook();
-
+    private ColorWheel mColorWheel = new ColorWheel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,10 @@ public class FunFactsActivity extends Activity {
 
         // Declare our view variables and assign view from layout file
         final TextView factLabel = (TextView) findViewById(R.id.factTextView);
-        Button showFactButton = (Button) findViewById(R.id.showFactButton);
+        final Button showFactButton = (Button) findViewById(R.id.showFactButton);
+
+        // Dynamic background
+        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 
         View.OnClickListener listener = new View.OnClickListener(){
 
@@ -34,7 +39,10 @@ public class FunFactsActivity extends Activity {
                 // update the label with our dynamic fact
                 factLabel.setText(fact);
 
+                int color = mColorWheel.getColor();
+                relativeLayout.setBackgroundColor(color);
 
+                showFactButton.setTextColor(color);
             }
         };
         showFactButton.setOnClickListener(listener);
